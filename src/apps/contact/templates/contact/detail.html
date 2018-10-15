@@ -1,0 +1,43 @@
+{% extends "contact/base_contact.html" %}
+
+{% block title %}- Contact message details{% endblock title %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div>
+          <h1 class="title">{{ contact.subject }}</h1>
+          <span class="small">
+            <i class="fas fa-envelope"></i> Email
+            <span class="text-info">{{ contact.email }}</span>
+          </span>
+
+          <span class="small">
+            <strong><i class="fas fa-user"></i> Usuario registrado</strong>:
+            {% if contact.is_register %}
+              <i class="fas fa-check-circle text-success"></i>
+            {% else %}
+              <i class="fas fa-ban text-danger"></i>
+            {% endif %}
+          </span>
+        </div>
+        <hr>
+
+        <div>
+          {{ contact.text|linebreaksbr }}
+          <hr>
+        </div>
+
+        <div class="mt-4">
+          <a class="btn btn-primary" href="{% url 'contact:list' %}">
+            <i class="fas fa-angle-left"></i> Volver
+          </a>
+          <a class="btn btn-danger" href="{% url 'contact:delete' contact.pk %}">
+            <i class="fas fa-trash"></i> Delete
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

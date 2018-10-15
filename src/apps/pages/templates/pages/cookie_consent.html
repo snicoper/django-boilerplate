@@ -1,0 +1,17 @@
+{% extends "pages/base_pages.html" %}
+{% load utils_tags %}
+
+{% block meta_description %}Política de cookies{% endblock meta_description %}
+{% block head_title %}- Política de cookies{% endblock head_title %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-md-10 m-auto">
+        <h1>Política de cookies en {{ SITE.name }}</h1>
+
+        {% markdown template_md safe=True %}
+      </div>
+    </div>
+  </div>
+{% endblock content %}

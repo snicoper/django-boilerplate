@@ -1,0 +1,40 @@
+// Errores a nivel de form.
+form {
+  .alert-danger {
+    color: theme-color("danger") !important;
+    font-size: 1rem;
+    font-weight: 400;
+    padding: 1rem;
+  }
+}
+
+.help-block {
+  font-size: 0.8rem;
+  color: gray("600");
+
+  ul {
+    padding-left: 1rem;
+  }
+}
+
+input,
+textarea {
+  @extend .rounded-0;
+}
+
+// custom-select fix
+// IE
+select::-ms-expand {
+  display: none;
+}
+
+// Firefox
+.custom-select {
+  outline: none;
+  overflow: hidden;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 0.01px;
+  text-overflow: '';
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{% block meta_description %}{% endblock meta_description %}">
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+  <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+  <link rel="apple-touch-icon" href="{% static 'logo.png' %}">
+  <title>{{ SITE.name }} {% block head_title %}{% endblock head_title %}</title>
+
+  <!-- CSS -->
+  {% if DEBUG %}
+    <link href="{% static 'dist/css/main.css' %}" rel="stylesheet">
+  {% else %}
+    <link href="{% static 'dist/css/main.min.css' %}" rel="stylesheet">
+  {% endif %}
+
+  <!-- Extras en header -->
+  {% block extra_heads %}{% endblock extra_heads %}
+</head>
+<body>
+  <!-- header -->
+  {% block header %}{% include "_header.html" %}{% endblock header %}
+
+  <!-- content -->
+  <main>
+    <!-- Titulo de la pagina -->
+    {% block page_title %}{% endblock page_title %}
+
+
+    <!-- Mensajes -->
+    {% if messages %}{% include "_messages.html" %}{% endif %}
+    <!-- Contenido principal -->
+    {% block content %}{% endblock content %}
+  </main><!-- end content -->
+
+  <!-- footer -->
+  {% block footer %}{% include "_footer.html" %}{% endblock footer %}
+
+  <!-- Botón de subir, solo se muestra >= tablets -->
+  <div class="to-top hidden d-none d-md-block"></div>
+
+  <!-- Cookieconsent -->
+  {% include "_cookieconsent.html" %}
+
+  <!-- Javascript -->
+  <script src="{% static 'dist/js/third.js' %}"></script>
+  {% if DEBUG %}
+    <script src="{% static 'dist/js/main.js' %}"></script>
+  {% else %}
+    <script src="{% static 'dist/js/main.min.js' %}"></script>
+  {% endif %}
+
+  <!-- Scripts -->
+  {% block scripts %}{% endblock scripts %}
+</body>
+</html>

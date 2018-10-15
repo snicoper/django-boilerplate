@@ -1,0 +1,23 @@
+{% extends "contact/base_contact.html" %}
+{% load bootstrap4 %}
+
+{% block title %}- Contact{% endblock title %}
+{% block meta_description %}Formulario de contacto{% endblock meta_description %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 m-auto">
+        <h1 class="title">Contacto</h1>
+
+        <form method="post" action="">
+          {% csrf_token %}
+          {% bootstrap_form form %}
+          <button class="btn btn-primary" type="submit">
+            <i class="far fa-envelope"></i> Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

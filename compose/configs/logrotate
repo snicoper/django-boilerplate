@@ -1,0 +1,8 @@
+/var/log/gunicorn/*log {
+    create 0644 TU_USER TU_GROUP
+    daily
+    rotate 10
+    missingok
+    notifempty
+    compress
+}

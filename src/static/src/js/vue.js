@@ -1,0 +1,2 @@
+// Vuejs
+Vue.options.delimiters = ['[[', ']]']

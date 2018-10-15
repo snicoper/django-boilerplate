@@ -1,0 +1,30 @@
+{% extends "authentication/base_authentication.html" %}
+{% load bootstrap4 %}
+
+{% block meta_description %}Iniciar sesión{% endblock meta_description %}
+{% block head_title %}- Iniciar sesión{% endblock head_title %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 m-auto shadow-md pb-3">
+        <h1 class="title">Iniciar sesión</h1>
+
+        <form method="post" action="">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+
+            <button class="btn btn-primary btn-sm-block" type="submit">
+              <i class="fas fa-sign-in-alt"></i> Iniciar sesión
+            </button>
+            <a class="btn btn-success btn-sm-block" href="{% url 'authentication:register' %}">
+              <i class="fas fa-user-plus"></i> Crear cuenta
+            </a>
+            <a class="btn btn-warning btn-sm-block" href="{% url 'authentication:password_reset' %}">
+              ¿Ha olvidado su contraseña?
+            </a>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

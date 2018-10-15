@@ -1,0 +1,27 @@
+{% extends "authentication/base_authentication.html" %}
+{% load bootstrap4 %}
+
+{% block meta_description %}Actualizar email{% endblock meta_description %}
+{% block head_title %}- Actualizar email{% endblock head_title %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 m-auto shadow-md pb-3">
+        <h1 class="title">Actualizar email</h1>
+
+        <form method="post" action="">
+          {% csrf_token %}
+          {% bootstrap_form form %}
+
+          <button class="btn btn-primary btn-xs-block" type="submit">
+            <i class="fas fa-pencil-alt"></i> Actualizar
+          </button>
+          <a class="btn btn-secondary btn-xs-block" href="{% url 'accounts:profile' %}">
+              <i class="fas fa-angle-left"></i> Volver
+          </a>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

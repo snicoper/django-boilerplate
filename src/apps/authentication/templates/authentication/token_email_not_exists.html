@@ -1,0 +1,20 @@
+{% extends "authentication/base_authentication.html" %}
+
+{% block meta_description %}Error cambio de Email{% endblock meta_description %}
+{% block head_title %}- Error cambio de Email{% endblock head_title %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 m-auto">
+        <h1 class="title">Error cambio de Email</h1>
+
+        <p>La validación para cambiar el email no existe o ha caducado, prueba a hacer una nueva
+          <a href="{% url 'authentication:email_update' %}">solicitud</a>.</p>
+
+        <p>Si el problema persiste, por favor ponte en <a href="{% url 'contact:contact' %}">contacto</a>
+          con nosotros.</p>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

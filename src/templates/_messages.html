@@ -1,0 +1,14 @@
+<div class="container mt-2">
+  <div class="row">
+    <div class="col-lg-8 offset-lg-2">
+      {% for message in messages %}
+        <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} alert-icon alert-dismissible fade show">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

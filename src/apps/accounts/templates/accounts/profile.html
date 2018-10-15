@@ -1,0 +1,93 @@
+{% extends "accounts/base_accounts.html" %}
+
+{% block meta_description %}Perfil de usuario{% endblock meta_description %}
+{% block title %}- Perfil de usuario{% endblock title %} {% block content %}
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="title">Perfil de usuario</h1>
+        <div class="row">
+          <div class="col-12">
+            <div class="text-center mb-3">
+              <img class="shadow-md" src="{{ MEDIA_URL }}{{ user.photo.name }}" alt="Avatar usuario">
+              <br>
+              <a class="btn btn-outline-primary btn-sm mt-2" href="{% url 'accounts:photo_update' user.slug %}">
+                <i class="fas fa-pencil-alt"></i> Cambiar imagen
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <td>
+                <i class="fas fa-user"></i> Nombre de usuario
+              </td>
+              <td class="text-right">
+                <span class="text-info">{{ user.username }}</span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <i class="fas fa-envelope"></i> Email
+              </td>
+              <td class="text-right">
+                {{ user.email }}
+                <a class="btn btn-sm btn-light" href="{% url 'authentication:email_update' %}">
+                  <i class="fas fa-pencil-alt"></i>
+                </a>
+              </td>
+            </tr>
+            {% if user.user_email_update %}
+              <tr>
+                <td>
+                  <i class="fas fa-envelope"></i> Email por confirmar
+                </td>
+                <td class="text-right">
+                  {{ user.user_email_update.new_email }}
+                  <form action="{% url 'authentication:user_remove_email_temporal' %}" method="post">
+                    {% csrf_token %}
+                    <button class="btn btn-sm btn-light"
+                            type="submit"
+                            data-toggle="tooltip"
+                            title="Descartar">
+                      <i class="fas fa-trash text-danger"></i>
+                    </button>
+                    <i class="fas fa-question-circle text-info"
+                       data-toggle="tooltip"
+                       title="Para mandar otra validación, haz un cambio de email">
+                    </i>
+                  </form>
+                </td>
+              </tr>
+            {% endif %}
+            <tr>
+              <td>
+                <i class="fas fa-unlock-alt"></i> Contraseña
+              </td>
+              <td class="text-right">
+                ************
+                <a class="btn btn-sm btn-light" href="{% url 'authentication:password_change' %}">
+                  <i class="fas fa-pencil-alt"></i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <hr>
+        <a href="#" class="btn btn-primary disabled">
+          <i class="fas fa-pencil-alt"></i> Editar
+        </a>
+
+        {% if user.is_superuser %}
+          <a class="btn btn-warning" href="/admin" target="_blank">
+            <i class="fas fa-cogs"></i> Administración
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock content %}

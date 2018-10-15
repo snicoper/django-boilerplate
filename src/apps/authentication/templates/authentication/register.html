@@ -1,0 +1,27 @@
+{% extends "authentication/base_authentication.html" %}
+{% load bootstrap4 %}
+
+{% block meta_description %}Registro nueva cuenta{% endblock meta_description %}
+{% block head_title %}- Registro nueva cuenta{% endblock head_title %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 m-auto shadow-md pb-3">
+        <h1 class="title">Registro nueva cuenta</h1>
+
+        <form method="post" action="">
+          {% csrf_token %}
+          {% bootstrap_form form %}
+
+          <button class="btn btn-primary btn-sm-block" type="submit">
+            <i class="fas fa-user-plus"></i> Registro
+          </button>
+          <a class="btn btn-success btn-sm-block" href="{% url 'authentication:login' %}">
+            ¿Tienes una cuenta?
+          </a>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock content %}

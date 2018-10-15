@@ -1,0 +1,13 @@
+Nuevo mensaje de contacto desde {{ site_name }}.
+
+Enviado por: {{ email }}
+Usuario registrado: {% if is_register %}Si{% else %}No{% endif %}
+Asunto: {{ subject }}
+
+Mensaje:
+
+{{ text }}
+
+Para ver el mensaje, desde la Web visita el siguiente enlace:
+
+{{ callback_url }}

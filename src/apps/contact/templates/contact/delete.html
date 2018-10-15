@@ -1,0 +1,25 @@
+{% extends "contact/base_contact.html" %}
+
+{% block title %}- Contact message details{% endblock title %}
+
+{% block content %}
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-12">
+        <div class="alert alert-warning alert-icon">
+          Seguro que quieres eliminar {{ contact.subject }}
+        </div>
+
+        <form method="post" action="">
+          {% csrf_token %}
+          <button class="btn btn-danger" type="submit">
+            <i class="fas fa-trash"></i> Si, seguro
+          </button>
+          <a class="btn btn-primary" href="{% url 'contact:details' contact.pk %}">
+            <i class="fas fa-angle-left"></i> Volver
+          </a>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock content %}
